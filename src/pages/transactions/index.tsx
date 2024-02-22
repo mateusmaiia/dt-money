@@ -1,9 +1,23 @@
+import { useEffect } from "react";
 import { Header } from "../../components/Header/Header";
 import { SearchForm } from "../../components/SearchForm/SearchForm";
 import { Summary } from "../../components/Summary/Summary";
 import * as S from "./styles";
 
 export function Transactions() {
+  useEffect(() => {
+    async function FetchDatas() {
+      try {
+        const response = await fetch("http://localhost:3333/transactions");
+        const data = await response.json();
+        return console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    FetchDatas();
+  }, []);
   return (
     <div>
       <Header />
