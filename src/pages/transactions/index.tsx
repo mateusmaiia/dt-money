@@ -1,16 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "../../components/Header/Header";
 import { SearchForm } from "../../components/SearchForm/SearchForm";
 import { Summary } from "../../components/Summary/Summary";
 import * as S from "./styles";
 
 export function Transactions() {
+  const [transactions, setTtransactions] = useState([]);
   useEffect(() => {
     async function FetchDatas() {
       try {
         const response = await fetch("http://localhost:3333/transactions");
         const data = await response.json();
-        return console.log(data);
+        return setTtransactions(data);
       } catch (err) {
         console.log(err);
       }
