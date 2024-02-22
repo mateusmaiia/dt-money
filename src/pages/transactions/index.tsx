@@ -4,8 +4,17 @@ import { SearchForm } from "../../components/SearchForm/SearchForm";
 import { Summary } from "../../components/Summary/Summary";
 import * as S from "./styles";
 
+interface transactionProps {
+  id: number;
+  description: string;
+  type: "income" | "outcome";
+  category: string;
+  price: number;
+  createdAt: string;
+}
+
 export function Transactions() {
-  const [transactions, setTtransactions] = useState([]);
+  const [transactions, setTtransactions] = useState<transactionProps[]>([]);
   useEffect(() => {
     async function FetchDatas() {
       try {
