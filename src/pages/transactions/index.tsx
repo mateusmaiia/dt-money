@@ -36,27 +36,19 @@ export function Transactions() {
         <SearchForm />
         <S.TransactionsTable>
           <tbody>
-            <tr>
-              <td width="50%">Desenvolvimento de site</td>
-              <td>
-                <S.PriceHighlight variant="income">
-                  R$ 12.000,00
-                </S.PriceHighlight>
-              </td>
+            {transactions.map((transaction) => (
+              <tr key={transaction.id}>
+                <td width="50%">{transaction.category}</td>
+                <td>
+                  <S.PriceHighlight variant="income">
+                    {transaction.price}
+                  </S.PriceHighlight>
+                </td>
 
-              <td>Venda</td>
-              <td>13/04/2022</td>
-            </tr>
-            <tr>
-              <td width="50%">Hamburguer</td>
-              <td>
-                <S.PriceHighlight variant="outcome">
-                  - R$ 59.000,00
-                </S.PriceHighlight>
-              </td>
-              <td>Alimentação</td>
-              <td>10/04/2022</td>
-            </tr>
+                <td>{transaction.type}</td>
+                <td>{transaction.createdAt}</td>
+              </tr>
+            ))}
           </tbody>
         </S.TransactionsTable>
       </S.TransactionsContainer>
