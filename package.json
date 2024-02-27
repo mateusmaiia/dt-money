@@ -11,6 +11,7 @@
     "dev:server": "json-server server.json -p 3333 --watch"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-radio-group": "^1.1.3",
     "axios": "^1.6.7",
