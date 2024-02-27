@@ -26,7 +26,7 @@ export function NewTransactionModal() {
         <S.Content>
           <Dialog.Title>Nova transação</Dialog.Title>
 
-          <form>
+          <form >
             <input 
               type="text" 
               placeholder="Descrição"
@@ -37,7 +37,7 @@ export function NewTransactionModal() {
               type="number
               "placeholder="Preço" 
               required 
-              {...register('price')}
+              {...register('price', {valueAsNumber: true})}
             />
             <input 
               type="text" 
