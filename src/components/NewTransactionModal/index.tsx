@@ -1,8 +1,23 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import * as S from "./styles";
 import { ArrowCircleDown, ArrowCircleUp, X } from "phosphor-react";
+import * as z from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const NewTransactionFormSchema = z.object(){
+  description: z.string(),
+  price: z.number(),
+  category: z.enum(["income", "outcome"]),
+});
+
+type NewTransactionFormInputs = z.infer<typeof NewTransactionFormSchema>;
 
 export function NewTransactionModal() {
+  const { register, handleSubmit } = useForm<NewTransactionFormInputs>({
+    resolver: zodResolver(NewTransactionFormSchema),
+  });
+
   return (
     <Dialog.Portal>
       {/**Faz com que o elemento que está dentro dele vá parar em outro local */}
@@ -12,9 +27,24 @@ export function NewTransactionModal() {
           <Dialog.Title>Nova transação</Dialog.Title>
 
           <form>
-            <input type="text" placeholder="Descrição" required />
-            <input type="number" placeholder="Preço" required />
-            <input type="text" placeholder="Categoria" required />
+            <input 
+              type="text" 
+              placeholder="Descrição"
+              required 
+              {...register('description')}
+            />
+            <input 
+              type="number
+              "placeholder="Preço" 
+              required 
+              {...register('price')}
+            />
+            <input 
+              type="text" 
+              placeholder="Categoria"
+              {...register('category')}
+              required 
+            />
 
             <S.TransactionType>
               <S.TransactionTypeButton variant="income" value="income">
