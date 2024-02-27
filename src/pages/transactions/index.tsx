@@ -4,6 +4,7 @@ import { SearchForm } from "../../components/SearchForm/SearchForm";
 import { Summary } from "../../components/Summary/Summary";
 import * as S from "./styles";
 import { TransactionsContext } from "../../contexts/TransactionsContext";
+import { priceFormatter } from "../../utils/formatter";
 
 export function Transactions() {
   const { transactions } = useContext(TransactionsContext);
@@ -21,7 +22,7 @@ export function Transactions() {
                 <td width="50%">{transaction.category}</td>
                 <td>
                   <S.PriceHighlight variant={transaction.type}>
-                    {transaction.price}
+                    {priceFormatter.format(transaction.price)}
                   </S.PriceHighlight>
                 </td>
 
