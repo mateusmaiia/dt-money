@@ -17,7 +17,9 @@ export function SearchForm() {
   } = useForm<SearchFormInputs>({
     resolver: zodResolver(SearchFormSchema),
   });
-  function handleSearchTransactions(data: SearchFormInputs) {
+  async function handleSearchTransactions(data: SearchFormInputs) {
+    // chama o resolve da promise depois de 2 segundos
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     console.log(data);
   }
   return (
