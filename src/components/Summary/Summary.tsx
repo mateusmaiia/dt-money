@@ -3,6 +3,8 @@ import * as S from "./styles";
 import { useSummary } from "../../hooks/useSummary";}
 import { priceFormatter } from "../../utils/formatter";
 export function Summary() {
+
+  const summary = useSummary()
   return (
     <S.SummaryContainer>
       <S.SummaryCard>
